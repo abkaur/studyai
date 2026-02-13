@@ -18,21 +18,21 @@ This is an MVP (Minimum Viable Product) focused on demonstrating the end-to-end 
 
 🚀 Features
 
-Upload a .pdf file from the browser
+1. Upload a .pdf file from the browser
 
-Backend validates and extracts text from the PDF
+2. Backend validates and extracts text from the PDF
 
-Generates:
+3. Generates:
 
-Summary
+. Summary
 
-Flashcards
+. Flashcards
 
-Quiz
+. Quiz
 
-Displays results in the React UI
+4. Displays results in the React UI
 
-Swagger API available for testing the backend
+5. Swagger API available for testing the backend
 
 🏗️ Architecture (High Level)
 [ React Frontend ]  --->  [ FastAPI Backend ]  --->  [ PDF Parser + AI Generator ]
@@ -85,35 +85,35 @@ http://localhost:3000
 
 🧑‍💻 How the App Works (User Flow)
 
-User selects a .pdf file in the UI
+1. User selects a .pdf file in the UI
 
-User clicks Upload
+2. User clicks Upload
 
-React sends a POST request with multipart/form-data
+3. React sends a POST request with multipart/form-data
 
-FastAPI backend:
+4. FastAPI backend:
 
-Validates file type
+-Validates file type
 
-Extracts text from PDF
+-Extracts text from PDF
 
-Generates:
+-Generates:
 
-Summary
+. Summary
 
-Flashcards
+. Flashcards
 
-Quiz
+. Quiz
 
-Backend returns JSON response
+5. Backend returns JSON response
 
-Frontend displays:
+6. Frontend displays:
 
-Summary
+. Summary
 
-Flashcards
+. Flashcards
 
-Quiz
+. Quiz
 
 📂 Project Structure
 studyai/
@@ -139,23 +139,23 @@ studyai/
 
 🔮 Future Enhancements
 
-Real AI integration:
+1. Real AI integration:
 Replace the current placeholder logic with real AI models (OpenAI / Azure OpenAI / local LLMs) to generate high-quality summaries, flashcards, and quizzes.
 
-Better PDF extraction:
+2. Better PDF extraction:
 Improve accuracy for complex PDFs (tables, columns, scanned PDFs) and add OCR for scanned documents.
 
-More file formats:
+3. More file formats:
 Support PPTX and DOCX uploads.
 
-Export options:
+4. Export options:
 Download results as PDF/Word or export flashcards to Anki.
 
-Improved UI/UX:
+5. Improved UI/UX:
 Add tabs for Summary/Flashcards/Quiz, loading indicators, error messages, and better styling.
 
-User accounts & history:
+6. User accounts & history:
 Allow users to log in and save past uploads and generated materials.
 
-Deployment:
+7. Deployment:
 Deploy frontend (Vercel/Netlify) and backend (Render/Fly.io) and manage environment variables securely.

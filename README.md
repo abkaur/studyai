@@ -100,7 +100,7 @@ Open Swagger:
 
 http://127.0.0.1:8000/docs
 
-2) Frontend (React)
+### 2) Frontend (React)
 Open a second terminal:
 
 cd frontend
@@ -125,32 +125,3 @@ generates study materials
 
 React displays the results (summary, flashcards, quiz)
 
-Environment Variables (Future AI)
-If/when you enable real AI generation, you will use:
-
-OPENAI_API_KEY
-
-Create a .env in backend/:
-
-OPENAI_API_KEY=your_key_here
-Future Enhancements (for Report)
-Replace placeholder logic with real AI generation (OpenAI / local LLM)
-
-Better PDF parsing (handle scanned PDFs with OCR)
-
-Support PPTX/DOCX input formats
-
-Export results to PDF / Word / Anki flashcards
-
-User accounts + history (save past uploads)
-
-Better UI: tabs, collapsible cards, copy buttons, download buttons
-
-Deploy to cloud (Render/Fly.io for backend + Vercel/Netlify for frontend)
-
-Screenshots
-(Add screenshots here)
-
-Upload screen
-
-Results screen

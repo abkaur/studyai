@@ -100,9 +100,11 @@ Open Swagger:
 
 http://127.0.0.1:8000/docs
 
-### 2) Frontend (React)
-Open a second terminal:
+## 2) Frontend (React)
 
+Open a second terminal and go to the frontend folder:
+
+```bash
 cd frontend
 npm install
 npm start
@@ -110,18 +112,32 @@ Frontend runs at:
 
 http://localhost:3000
 
-How Upload Works (User Flow)
-User selects a .pdf file in the UI
+What you should see
+A simple upload UI
 
-React sends a POST request with multipart/form-data
+Choose a .pdf file
 
-FastAPI receives the file and:
+Click Upload
 
-validates the file type
+Results appear on the page:
 
-extracts PDF text
+Summary
 
-generates study materials
+Flashcards
 
-React displays the results (summary, flashcards, quiz)
+Quiz
+
+
+Now add this at the **end of your README** (separate section):
+
+```md
+## Future Enhancements
+
+- **Real AI generation:** Replace the current placeholder/hardcoded content with AI-generated summary, flashcards, and quiz (OpenAI / local LLM).
+- **Better PDF extraction:** Improve accuracy for complex PDFs (tables, columns, scanned PDFs). Add OCR for scanned documents.
+- **More file formats:** Add support for PPTX and DOCX uploads.
+- **Export options:** Download results as PDF/Word, or export flashcards to Anki.
+- **Improved UI/UX:** Tabs for Summary/Flashcards/Quiz, copy buttons, loading animations, error banners, and progress indicators.
+- **User accounts + history:** Save uploads and generated materials per user.
+- **Deployment:** Deploy frontend (Vercel/Netlify) + backend (Render/Fly.io) and configure environment variables securely.
 

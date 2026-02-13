@@ -1,125 +1,28 @@
-# StudyAI (MVP) — PDF → Summary, Flashcards, Quiz
+# 📘 StudyAI (MVP) — PDF → Summary, Flashcards, Quiz
 
-StudyAI is a lightweight web app that lets users upload a **PDF (lecture notes / slides / reading)** and generates study materials:
-- ✅ Summary
-- ✅ Flashcards
-- ✅ Quiz (MCQs)
+StudyAI is a web application that allows users to upload a PDF and automatically generate:
 
-This is an MVP built with:
-- **React** frontend
-- **FastAPI** backend
+✅ A summary
 
-> Current MVP behavior: the backend extracts text from the uploaded PDF and returns structured “study materials”.  
-> Future enhancement: replace placeholder generation with real AI (OpenAI / local LLM).
+✅ Flashcards
 
----
+✅ A quiz
 
-## Features (MVP)
-- Upload a **PDF** from the browser
-- Backend extracts text + returns a preview
-- Backend returns:
-  - Summary
-  - Flashcards (Q/A)
-  - Quiz (MCQs + answers)
-- Simple UI to display results
+The project uses:
 
----
+Frontend: React
 
-## Tech Stack
-### Frontend
-- React (Create React App)
-- Fetch API (multipart/form-data upload)
+Backend: FastAPI (Python)
 
-### Backend
-- FastAPI
-- Uvicorn
-- PDF text extraction (your PDF extraction library)
-- CORS enabled for local development
+This is an MVP (Minimum Viable Product) focused on demonstrating the end-to-end flow: file upload → backend processing → results shown in UI.
 
----
+🚀 Features
 
-## Project Structure
-studyai/
-backend/
-app/
-main.py
-routers/
-upload.py
-services/
-ai_generator.py
-utils/
-pdf_extractor.py (example name)
-requirements.txt
-frontend/
-src/
-App.js
-App.css
-components/
-Upload.tsx (optional)
-package.json
-terraform/ (optional, if you added infra)
-README.md
+Upload a .pdf file from the browser
 
+Backend validates and extracts text from the PDF
 
----
-
-## API Overview
-### Base URL (Local)
-- `http://127.0.0.1:8000`
-
-### Endpoints
-- `GET /` → health check (“StudyAI API running”)
-- `POST /api/upload/` → upload a PDF and receive study materials
-
-> Note: If your router is included as:
-> `app.include_router(upload.router, prefix="/api/upload")`
-> and inside router you used `@router.post("/upload")`,
-> then the final URL becomes:  
-> ✅ `/api/upload/upload`  
-> To make it just `/api/upload/`, use `@router.post("/")` instead.
-
----
-
-## Run Locally (Step-by-step)
-
-### 1) Backend (FastAPI)
-Open terminal in the backend folder:
-```bash
-cd backend
-Create & activate venv (Windows PowerShell):
-
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-Install dependencies:
-
-pip install -r requirements.txt
-Start the API:
-
-uvicorn app.main:app --reload
-Open Swagger:
-
-http://127.0.0.1:8000/docs
-
-## 2) Frontend (React)
-
-Open a second terminal and go to the frontend folder:
-
-```bash
-cd frontend
-npm install
-npm start
-Frontend runs at:
-
-http://localhost:3000
-
-What you should see
-A simple upload UI
-
-Choose a .pdf file
-
-Click Upload
-
-Results appear on the page:
+Generates:
 
 Summary
 
@@ -127,17 +30,132 @@ Flashcards
 
 Quiz
 
+Displays results in the React UI
 
-Now add this at the **end of your README** (separate section):
+Swagger API available for testing the backend
 
-```md
-## Future Enhancements
+🏗️ Architecture (High Level)
+[ React Frontend ]  --->  [ FastAPI Backend ]  --->  [ PDF Parser + AI Generator ]
+        |                         |
+        |                         └── Extract text from PDF
+        |                         └── Generate summary / flashcards / quiz
+        |
+        └── Displays results in UI
 
-- **Real AI generation:** Replace the current placeholder/hardcoded content with AI-generated summary, flashcards, and quiz (OpenAI / local LLM).
-- **Better PDF extraction:** Improve accuracy for complex PDFs (tables, columns, scanned PDFs). Add OCR for scanned documents.
-- **More file formats:** Add support for PPTX and DOCX uploads.
-- **Export options:** Download results as PDF/Word, or export flashcards to Anki.
-- **Improved UI/UX:** Tabs for Summary/Flashcards/Quiz, copy buttons, loading animations, error banners, and progress indicators.
-- **User accounts + history:** Save uploads and generated materials per user.
-- **Deployment:** Deploy frontend (Vercel/Netlify) + backend (Render/Fly.io) and configure environment variables securely.
+🛠️ How to Run Locally
+1) Backend (FastAPI)
 
+Open a terminal in the backend folder:
+
+cd backend
+
+
+Create and activate virtual environment (Windows PowerShell):
+
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Start the API:
+
+uvicorn app.main:app --reload
+
+
+Open Swagger UI:
+
+http://127.0.0.1:8000/docs
+
+2) Frontend (React)
+
+Open a second terminal and go to the frontend folder:
+
+cd frontend
+npm install
+npm start
+
+
+Frontend runs at:
+
+http://localhost:3000
+
+🧑‍💻 How the App Works (User Flow)
+
+User selects a .pdf file in the UI
+
+User clicks Upload
+
+React sends a POST request with multipart/form-data
+
+FastAPI backend:
+
+Validates file type
+
+Extracts text from PDF
+
+Generates:
+
+Summary
+
+Flashcards
+
+Quiz
+
+Backend returns JSON response
+
+Frontend displays:
+
+Summary
+
+Flashcards
+
+Quiz
+
+📂 Project Structure
+studyai/
+├── backend/        # FastAPI backend
+├── frontend/       # React frontend
+├── terraform/      # (Future infrastructure setup)
+├── README.md
+└── .gitignore
+
+🧪 Current Status (MVP)
+
+✅ PDF upload works
+
+✅ Backend processes PDF
+
+✅ Frontend displays results
+
+⚠️ AI output is currently simplified / placeholder logic
+
+⚠️ No authentication yet
+
+⚠️ Only PDF supported
+
+🔮 Future Enhancements
+
+Real AI integration:
+Replace the current placeholder logic with real AI models (OpenAI / Azure OpenAI / local LLMs) to generate high-quality summaries, flashcards, and quizzes.
+
+Better PDF extraction:
+Improve accuracy for complex PDFs (tables, columns, scanned PDFs) and add OCR for scanned documents.
+
+More file formats:
+Support PPTX and DOCX uploads.
+
+Export options:
+Download results as PDF/Word or export flashcards to Anki.
+
+Improved UI/UX:
+Add tabs for Summary/Flashcards/Quiz, loading indicators, error messages, and better styling.
+
+User accounts & history:
+Allow users to log in and save past uploads and generated materials.
+
+Deployment:
+Deploy frontend (Vercel/Netlify) and backend (Render/Fly.io) and manage environment variables securely.
